@@ -229,7 +229,12 @@ void list_concat(list_t *l1, list_t *l2)
 
 void list_reverse(list_t *l)
 {
-    assert(!list_empty(l));
+
+    if (list_empty(l) || l->head->next == NULL)
+    {
+        return;
+    }
+
     list_node_t *prev = NULL;
     list_node_t *current = l->head;
     list_node_t *next = NULL;
@@ -243,8 +248,41 @@ void list_reverse(list_t *l)
         prev = current;
         current = next;
     }
-
     l->head = prev;
+}
+
+void list_insertionsort_insert(list_t *l, int data)
+{
+    list_node_t *novo = malloc(sizeof(list_node_t));
+    novo->data = data;
+    novo->next = NULL;
+
+    if (list_empty(l))
+    {
+        l->head = l->tail = novo;
+        l->size = 1;
+        return;
+    }
+    if (data <= l->head->data)
+    {
+        novo->next = l->head;
+        l->head = novo;
+        l->size++;
+        return;
+    }
+    list_node_t *atual = l->head;
+    while (atual->next != NULL && atual->next->data < data)
+    {
+        atual = atual->next;
+    }
+    novo->next = atual->next;
+    atual->next = novo;
+    if (novo->next == NULL)
+    {
+        l->tail = novo;
+    }
+
+    l->size++;
 }
 
 void print_list(list_t *l)
