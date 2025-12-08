@@ -189,7 +189,7 @@ avl_node_t *avl_tree_remove_helper(avl_node_t *v, int data)
         v->right = avl_tree_remove_helper(v->right, data);
     }
     else
-    { /*remo¸c~ao do n´o*/
+    {
         if (v->left == NULL)
         {
             avl_node_t *tmp = v->right;
