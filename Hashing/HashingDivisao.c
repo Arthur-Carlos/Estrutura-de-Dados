@@ -1,63 +1,30 @@
-#include <stdio.h>
+#include <stdbool.h>
 #include <stdlib.h>
 
+#define MAX 1000
 
-typedef struct node {
-    int key;
-    struct node *next;
-} node_t;
+typedef struct query
+{
+    int pos;
+    int valor;
+} query;
 
-void insert(node_t **head, int key) {
-    node_t *new_node = malloc(sizeof(node_t));
-    new_node->key = key;
-    new_node->next = NULL;
+query queries[MAX];
 
-    if (*head == NULL) {
-        *head = new_node;
-        return;
+int main(){
+    int qtde, tam;
+    scanf("%d %d", &qtde, &tam);
+    int table[tam];
+    for (int i = 0; i < qtde; i++)
+    {
+        scanf("%d", &queries[i].valor);
+        queries[i].pos = i+1;
     }
 
-    node_t *curr = *head;
-    while (curr->next != NULL) {
-        curr = curr->next;
+    for (int i = 0; i < qtde; i++)
+    {
+        printf("%d %d \n", queries[i].valor, queries[i].pos);
     }
-    curr->next = new_node;
-}
-
-int main() {
-    int n, m;
-    scanf("%d %d", &n, &m);
-
-    node_t **table = calloc(m, sizeof(node_t*));
-
-    for (int i = 0; i < n; i++) {
-        int k;
-        scanf("%d", &k);
-
-        int idx = k % m;
-        insert(&table[idx], k);
-    }
-
-    for (int i = 0; i < m; i++) {
-        printf("T[%d]", i);
-
-        node_t *curr = table[i];
-        while (curr != NULL) {
-            printf(" -> %d", curr->key);
-            curr = curr->next;
-        }
-
-        printf(" -> NULL\n");
-    }
-    for (int i = 0; i < m; i++) {
-        node_t *curr = table[i];
-        while (curr != NULL) {
-            node_t *tmp = curr;
-            curr = curr->next;
-            free(tmp);
-        }
-    }
-    free(table);
-
+    
     return 0;
 }
