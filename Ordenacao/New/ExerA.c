@@ -49,7 +49,8 @@ static void merge(Palavra *v, Palavra *v1, size_t n1,
 
     while (j < n1 && k < n2)
     {
-        if (strcmp(v1[j].palavra, v2[k].palavra) <= 0)
+        // strlen(v1[j].palavra) == strlen(v2[k].palavra)
+        if (strlen(v1[j].palavra) <= strlen(v2[k].palavra))
             v[i++] = v1[j++];
         else
             v[i++] = v2[k++];
@@ -79,7 +80,6 @@ int main()
 
     for (int i = 0; i < N; i++)
         printf("%s\n", vetor[i].palavra);
-
     free(vetor);
     return 0;
 }
