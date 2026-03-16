@@ -1,0 +1,6 @@
+Exercício 17
+    Faça uma calculadora com as quatro operações básicas. Ela deverá possuir um menu para
+    escolher qual operação deve ser realizada. Obrigatoriamente você deverá utilizar ponteiros
+    para funções.
+    Dica: leia um inteiro indicando qual a opção da calculadora. Utilize esse inteiro para
+    indexar um vetor de ponteiro para funções e chamar a função apropriada.

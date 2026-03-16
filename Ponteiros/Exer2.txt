@@ -1,0 +1,31 @@
+Exercício 2
+    Os programas a seguir apresentam erros. Faça alterações de modo a corrigi-los.
+        (a) int main(void){
+            int x,*p;
+            x = 100;
+            p = x;
+            printf("O valor de p: %d.\n",*p);
+            }
+        (b) void troca(int* i, int * j){
+            int* tmp;
+            *tmp = *i;
+            *i = *j;
+            *j = *tmp;
+            }
+
+A)
+    int main(void)
+    {
+        int x, *p;
+        x = 100;
+        p = &x;
+        printf("O valor de p: %d.\n", *p);
+    }
+
+B)
+    void troca(int *i, int *j)
+    {
+    int tmp = *i;
+    *i = *j;
+    *j = tmp;
+    }

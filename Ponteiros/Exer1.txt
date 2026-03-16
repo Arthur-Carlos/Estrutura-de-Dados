@@ -1,0 +1,14 @@
+Exercício 1
+    Quais os valores de x, y e p ao final do seguinte código:
+        int x, y, *p;
+        y = 0;
+        p = &y;
+        x = *p;
+        x = 4;
+        (*p)++;
+        --x;
+        (*p) += x;
+
+X = 4
+Y = 3
+P = 4

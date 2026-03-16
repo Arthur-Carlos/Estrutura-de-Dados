@@ -1,0 +1,41 @@
+Exercício 8
+    Crie uma função que receba n notas de um aluno e retorne a sua situação. A função também deverá calcular a média e armazená-la em uma das variáveis passadas por “referência”.
+    A situação do aluno deverá ser ‘A’ em caso de aprovação, ’R’ em caso de reprovação. Considere que a média para aprovação é 6.0. Sua função deverá possuir a seguinte assinatura:
+    char calcula_situacao(double* v, int n, double* media);
+
+#include "stdio.h"
+#include "stdlib.h"
+
+char calcula_situacao(double *v, int n, double *media)
+{
+    double aux = 0;
+    for (int i = 0; i < n; i++)
+    {
+        aux = aux + v[i];
+    }
+    *media = aux / n;
+}
+
+int main(void)
+{
+    int n;
+    double x;
+    scanf("%d", &n);
+    double v[n];
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%lf", &x);
+        v[i] = x;
+    }
+    double media = 0;
+    calcula_situacao(v, n, &media);
+    if (media >= 6)
+    {
+        printf("A\n");
+    }
+    else
+    {
+        printf("R\n");
+    }
+    return 0;
+}

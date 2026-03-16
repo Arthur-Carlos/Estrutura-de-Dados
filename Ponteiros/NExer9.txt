@@ -1,0 +1,8 @@
+Exercício 9
+    Implemente uma função getline que leia uma linha inteira e retorne uma string com
+    os caracteres lidos independente do número de caracteres. A string deverá ser alocada
+    dinâmicamente de modo a não desperdiçar espaço. Sua função deverá possuir a seguinte
+    assinatura:
+    char* getline(void);
+    Dica: para esta função é interessante utilizar as funções getchar() e realloc().
+

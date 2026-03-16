@@ -1,0 +1,22 @@
+Exercício 6
+    Como uma passagem por referência em C pode ser emulada?
+
+#include "stdio.h"
+#include "stdlib.h"
+
+void troca(int *i, int *j)
+{
+    int tmp = *i;
+    *i = *j;
+    *j = tmp;
+}
+
+int main(void)
+{
+    int a, b;
+    a = 2;
+    b = 3;
+    troca(&a, &b);
+    printf("a = %d b = %d\n", a, b);
+    return 0;
+}

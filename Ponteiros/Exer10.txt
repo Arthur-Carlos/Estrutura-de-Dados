@@ -1,0 +1,10 @@
+Exercício 10
+    O que esta função faz?
+        int f(char* s){
+        char* p = s;
+        while(*p != ’\0’)
+        p++;
+        return p-s;
+        }
+
+Ele percorre uma string até encontrar o final dela "\0".

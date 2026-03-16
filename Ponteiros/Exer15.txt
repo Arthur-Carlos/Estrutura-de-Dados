@@ -1,0 +1,40 @@
+Exercício 15
+    Faça um programa que leia dois inteiros n e m e aloque uma matriz An×m de maneira
+    dinâmica.
+
+#include "stdio.h"
+#include "stdlib.h"
+
+int main(void)
+{
+    int n, m;
+    int i, j;
+    scanf("%d %d", &n, &m);
+    int **vetor = calloc(n, sizeof(int));
+    if (vetor == NULL)
+    {
+        printf("Erro");
+        exit(EXIT_FAILURE);
+    }
+    vetor[0] = calloc(n * m, sizeof(int));
+    if (vetor[0] == NULL)
+    {
+        printf("Erro");
+        exit(EXIT_FAILURE);
+    }
+    for (j = 0; j < n; j++)
+    {
+        vetor[j] = vetor[0] + j * m;
+    }
+    for (i = 0; i < n; i++)
+    {
+        for (j = 0; j < m; j++)
+        {
+            printf("%3d ", vetor[i][j]);
+        }
+        printf("\n");
+    }
+    free(vetor[0]);
+    free(vetor);
+    return 0;
+}

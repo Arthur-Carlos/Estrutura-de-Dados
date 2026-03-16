@@ -1,0 +1,65 @@
+Exercício 14
+    Crie um vetor de inteiros redimensionável. As seguintes operações devem atuar sobre o
+    vetor:
+        • void push_back(int* v,int* n,int* capacidade,int valor):
+            insere o conteúdo de valor em v e atualiza o seu tamanho n. Caso o vetor chegue 
+            na sua capacidade,ela deve ser dobrada.
+
+        • void print(int* v,int n):
+            imprime o vetor v.
+
+        • int pop_back(int* v,int* n,int* capacidade):
+            retorna o último elemento do
+            vetor e o retira do mesmo, decrementando o tamanho dele. No caso de o vetor
+            possuir 1/4 da sua capacidade máxima, ela deve ser reduzida pela metade.
+
+
+void push_back(int *v, int *n, int *capacidade, int valor)
+{
+    if (*n == *capacidade)
+    {
+        *capacidade *= 2;
+        *v = realloc(*v, (*capacidade) * sizeof(int));
+        if (*v == NULL)
+        {
+            printf("Erro de realocacao!\n");
+            exit(1);
+        }
+    }
+
+    (*v)[*n] = valor;
+    (*n)++;
+}
+
+void print(int *v, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d ", v[i]);
+    }
+    printf("\n");
+}
+
+int pop_back(int *v, int *n, int *capacidade)
+{
+    if (*n == 0)
+    {
+        printf("Vetor vazio!\n");
+        exit(1);
+    }
+
+    int valor = (*v)[*n - 1];
+    (*n)--;
+
+    if (*n > 0 && *n == (*capacidade) / 4)
+    {
+        *capacidade /= 2;
+        *v = realloc(*v, (*capacidade) * sizeof(int));
+        if (*v == NULL)
+        {
+            printf("Erro de realocacao!\n");
+            exit(1);
+        }
+    }
+    return valor;
+}

@@ -1,0 +1,11 @@
+Exercício 4
+    Detalhe a organização da memória de um programa. Qual é a porção da memória que
+    persiste entre chamadas de funções e qual a que não persiste?
+
+A memória de um programa é dividida em quatro segmentos:
+▶ Código: contém o binário do programa.
+▶ Dados estáticos: contém variáveis globais e estáticas que existem durante toda a
+execução do programa.
+▶ Pilha (stack): contém as variáveis locais que são criadas na execução de uma
+função e depois são removidas da pilha ao término da função.
+▶ Heap: contém as variáveis criadas por alocação dinâmica.

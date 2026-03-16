@@ -1,0 +1,35 @@
+Exercício 7
+    Crie uma função min_max que recebe um vetor de inteiros de n elementos e retorne as
+    posições dos valores mínimo e máximo do vetor através de dois parâmetros inteiros l e r
+    passados por “referência” para função. Em caso de empate, a função deverá considerar a
+    posição mais à esquerda possível. Sua função deverá possuir a seguinte assinatura:
+    void min_max(int* v,int n, int* l,int* r);
+
+#include "stdio.h"
+#include "stdlib.h"
+
+void min_max(int *v, int n, int *l, int *r)
+{
+    *l = v[0];
+    *r = v[0];
+    for (int i = 0; i < n; i++)
+    {
+        if (v[i] < *l)
+        {
+            *l = v[i];
+        }
+        if (v[i] > *r)
+        {
+            *r = v[i];
+        }
+    }
+}
+
+int main(void)
+{
+    int v[] = {10, 80, 5, -10, 45, -20, 100, 200, 10};
+    int l, r;
+    min_max(v, 9, &l, &r);
+    printf("%d %d\n", l, r);
+    return 0;
+}

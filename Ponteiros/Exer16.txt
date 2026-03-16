@@ -1,0 +1,45 @@
+Exercício 16
+    Faça um programa que leia um inteiro n e aloque n strings de maneira dinâmica com
+    tamanho máximo de 80 caracteres.
+
+#include "stdio.h"
+#include "stdlib.h"
+
+int main(void)
+{
+    int n;
+    int i;
+    scanf("%d", &n);
+    char **vetor = malloc(n * sizeof(char *));
+    if (vetor == NULL)
+    {
+        printf("Erro");
+        exit(EXIT_FAILURE);
+    }
+    for (i = 0; i < n; i++)
+    {
+        vetor[i] = malloc(81 * sizeof(char));
+        if (vetor[i] == NULL)
+        {
+            printf("Erro de alocacao!\n");
+            return 1;
+        }
+    }
+    getchar();
+    for (i = 0; i < n; i++)
+    {
+        printf("Digite a string %d: ", i + 1);
+        fgets(vetor[i], 81, stdin);
+    }
+
+    for (i = 0; i < n; i++)
+    {
+        printf("%s", vetor[i]);
+    }
+    for (i = 0; i < n; i++)
+    {
+        free(vetor[i]);
+    }
+    free(vetor);
+    return 0;
+}

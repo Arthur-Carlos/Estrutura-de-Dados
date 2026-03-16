@@ -1,0 +1,12 @@
+Exercício 11
+    O que esta função faz?
+        void g(char* s,char* t){
+        int i = 0;
+        do{
+        *t = *s;
+        s++;
+        t++;
+        }while(*s != ’\0’);
+        }
+
+Ele sobreescreve S sobre T de tal forma que copiará toda a "string" S por cima de T

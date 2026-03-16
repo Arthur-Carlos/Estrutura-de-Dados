@@ -1,0 +1,12 @@
+Exercício 13
+    Implemente a sua versão da função strcat sem utilizar o operador [].
+
+int h(char *str1, const char *str2)
+{
+    char *ptr = str1 + strlen(str1);
+    while (*str2 != '\0')
+    {
+        *(ptr++) = *(str2++);
+    }
+    *ptr = '\0';
+}

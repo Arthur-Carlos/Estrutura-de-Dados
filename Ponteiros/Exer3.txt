@@ -1,0 +1,20 @@
+Exercício 3
+    Faça um programa que leia um inteiro n e crie um vetor de n números reais. O vetor deve
+    ser alocado de maneira dinâmica.
+
+#include "stdio.h"
+#include "stdlib.h"
+
+int main(void)
+{
+    int n, i;
+    scanf("%d", &n);
+    int v[n];
+    for(i = 1; i <= n; i++){
+        v[i] = i;
+    }
+    for(i = 1; i <= n; i++){
+        printf("%d\n", v[i]);
+    }
+    return 0;
+}

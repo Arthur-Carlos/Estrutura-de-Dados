@@ -1,0 +1,11 @@
+Exercício 12
+    O que esta função faz?
+        int h(char* s,char* t){
+        for( ; *s==*t ; s++, t++){
+        if(*s == ’\0’)
+        return 0;
+        }
+        return *s - *t;
+        }
+
+Compara Strings, percorrendo e retornando o valor ASCII da primeira letra que diferir.

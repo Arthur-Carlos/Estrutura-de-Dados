@@ -1,0 +1,8 @@
+Exercício 5
+    Se C não possui passagem por referência, explique detalhadamente como é possível emulá-la
+    através de ponteiros.
+
+A emulação de passagem por referência é obtida ao passarmos o endereço da
+variàvel que queremos modificar. Assim cria-se um novo ponteiro com valor igual
+a esse endereço. Desta forma, conseguimos manipular a variàvel com a cópia
+deste endereço.
