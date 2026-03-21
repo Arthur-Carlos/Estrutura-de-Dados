@@ -49,7 +49,6 @@ static void merge(Palavra *v, Palavra *v1, size_t n1,
 
     while (j < n1 && k < n2)
     {
-        // strlen(v1[j].palavra) == strlen(v2[k].palavra)
         if (strlen(v1[j].palavra) <= strlen(v2[k].palavra))
             v[i++] = v1[j++];
         else

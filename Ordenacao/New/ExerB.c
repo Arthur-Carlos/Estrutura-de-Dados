@@ -96,6 +96,7 @@ int main()
             contador ++;
         }
     }
+    printf("%d", contador);
     free(ptr);
     return 0;
 }
