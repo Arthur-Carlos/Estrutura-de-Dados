@@ -1,32 +1,49 @@
+//Codeforces 797C: Minimal String
 #include <stdio.h>
+#include <string.h>
 
-int main(void)
-{
-    int n;
-    scanf("%d", &n);
-    int v[n + 1];
-    int pilha[n];
-    int tam_pilha = 0;
-    for (int i = 0; i < n; i++)
-    {
-        scanf("%d", &v[i]);
+#define MAXN 100005
+
+char s[MAXN], t[MAXN], u[MAXN];
+int count[26];
+
+int main() {
+    if (scanf("%s", s) != 1) return 0;
+    int n = strlen(s);
+    
+    // Count frequency of each character to track what's left in s
+    for (int i = 0; i < n; i++) {
+        count[s[i] - 'a']++;
     }
-    for (int i = 1; i <= n; i++)
-    {
-        while (tam_pilha > 0 && v[pilha[tam_pilha - 1]] >= v[i])
-        {
-            tam_pilha--;
+
+    int top = -1; // Stack pointer for t
+    int u_idx = 0; // Index for result string u
+    int s_idx = 0; // Index for source string s
+    int min_char = 0; // Smallest char currently in s
+
+    while (s_idx < n || top != -1) {
+        // Find the smallest character still available in string s
+        while (min_char < 26 && count[min_char] == 0) {
+            min_char++;
         }
-        if (tam_pilha == 0)
-        {
-            printf("0 ");
+
+        // Case 1: Stack top is small enough to move to u
+        if (top != -1 && (t[top] - 'a' <= min_char)) {
+            u[u_idx++] = t[top--];
+        } 
+        // Case 2: Move from s to t until we hit the smallest char
+        else if (s_idx < n) {
+            count[s[s_idx] - 'a']--;
+            t[++top] = s[s_idx++];
+        } 
+        // Case 3: s is empty, drain the rest of the stack
+        else {
+            u[u_idx++] = t[top--];
         }
-        else
-        {
-            printf("%d ", pilha[tam_pilha-1]);
-        }
-        pilha[tam_pilha++] = i;
     }
-    printf("\n");
+
+    u[u_idx] = '\0';
+    printf("%s\n", u);
+    
     return 0;
-} // 8 2 5 1 4 8 3 2 1
+}
