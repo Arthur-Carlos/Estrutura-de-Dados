@@ -48,7 +48,7 @@ static void stack_shrink(stack_t *s)
 {
     s->capacity /= 2;
     s->stack = realloc(s->stack, sizeof(int) * s->capacity);
-}
+}  
 
 void stack_pop(stack_t *s)
 {
