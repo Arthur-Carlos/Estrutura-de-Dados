@@ -10,16 +10,14 @@ bool comparador(tree_node_t *t1)
     {
         return true;
     }
-    if (t1->left == NULL && t1->right == NULL)
-    {
-        return true;
-    }
-    if (t1->left == NULL || t1->right == NULL)
+
+    if ((t1->left == NULL) != (t1->right == NULL))
     {
         return false;
     }
     return comparador(t1->left) && comparador(t1->right);
 }
+
 bool is_full(tree_t *t1)
 {
     if (t1 == NULL || t1->root == NULL)
